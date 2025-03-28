@@ -24,6 +24,13 @@ pipeline {
             }
         }
         }
+          stage('quality-gate') {
+            steps {
+                timeout(5) {
+                waitForQualityGate abortPipeline: true
+                
+            }
+            }
         stage('deploy') {
             steps {
                 sh 'echo "Deploy step placeholder"'
