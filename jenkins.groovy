@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('git-hhjvkjkfhfh') {
+        stage('git-hhjvkjkfhkjfh') {
             steps {
                 git branch: 'main', url: 'https://github.com/Anilbamnote/student-ui-app.git'
             }
