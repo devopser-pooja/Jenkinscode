@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('git-clonke') {
+        stage('git-clone') { // Fixed stage name
             steps {
                 git branch: 'main', url: 'https://github.com/Anilbamnote/student-ui-app.git'
             }
@@ -14,28 +14,24 @@ pipeline {
         }
         stage('test') {
             steps {
-               // sh '''/opt/maven/bin/mvn sonar:sonar \\
-           //  -Dsonar.projectKey=student-app \\
-             // -Dsonar.host.url=http://16.170.173.14:9000 \\
-             //-Dsonar.login=e95a7bea19e9c7a64ab2793d78ef117fb58bd47b'''
-              withSonarQubeEnv(installationName: 'sonar',credentialsId: 'sonar-cred') {
-                  sh '/opt/maven/bin/mvn sonar:sonar'
-                sh 'echo "Test successfully done"'
+                withSonarQubeEnv(installationName: 'sonar', credentialsId: 'sonar-cred') {
+                    sh '/opt/maven/bin/mvn sonar:sonar'
+                    sh 'echo "Test successfully done"'
+                }
             }
         }
-        }
-          stage('quality- gate') {
+        stage('quality-gate') { // Fixed indentation & added missing braces
             steps {
-                timeout(5) {
-                waitForQualityGate abortPipeline: true
-                
+                timeout(time: 5, unit: 'MINUTES') { // Added unit for clarity
+                    waitForQualityGate abortPipeline: true
+                }
             }
-            }
-        stage('deploy') {
+        }
+        stage('deploy') { // Moved inside stages block
             steps {
                 sh 'echo "Deploy step placeholder"'
-                
             }
         }
     }
 }
+
