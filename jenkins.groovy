@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('git-clone') {
+        stage('git-clonke') {
             steps {
                 git branch: 'main', url: 'https://github.com/Anilbamnote/student-ui-app.git'
             }
