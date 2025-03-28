@@ -1,13 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('git-hhjvkjkfhkjfh') {
+        stage('git-clone') {
             steps {
                 git branch: 'main', url: 'https://github.com/Anilbamnote/student-ui-app.git'
             }
         }
         stage('build') {
             steps {
+                sh 'mvn clean package'
                 sh 'echo "Build successfully done"'
             }
         }
