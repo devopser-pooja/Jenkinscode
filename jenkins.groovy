@@ -25,6 +25,7 @@ pipeline {
                 waitForQualityGate abortPipeline: true
             }
         }
+    }
         
         stage('deploy') {  // Corrected indentation and placement
             steps {
