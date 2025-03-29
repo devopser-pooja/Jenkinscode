@@ -29,6 +29,7 @@ pipeline {
         }
         stage('deploy') { // Moved inside stages block
             steps {
+               deploy adapters: [tomcat9(credentialsId: 'Tomcat', path: '', url: 'http://172.31.34.191:8080')], contextPath: '/', war: '**/*.war'
                 sh 'echo "Deploy step placeholder"'
             }
         }
