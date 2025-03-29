@@ -17,12 +17,12 @@ pipeline {
              withSonarQubeEnv(installationName:'sonar',credentialsId: 'sonar-cred') {
                sh '/opt/maven/bin/mvn sonar:sonar'
                 sh 'echo "Test successfully done"'
-             
-            }
+              }
         }
     }
         stage('quality-gate') {
             steps {
+               timeout(time: 5, unit: 'MINUTES'){
                 waitForQualityGate abortPipeline: true
             }
         }
