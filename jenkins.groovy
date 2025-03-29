@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('git-clone') { // Fixed stage name
+        stage('git-clone') {
             steps {
                 git branch: 'main', url: 'https://github.com/Anilbamnote/student-ui-app.git'
             }
@@ -14,15 +14,11 @@ pipeline {
         }
         stage('test') {
             steps {
-                
-                    sh 'echo "Test successfully done"'
-                }
+                sh 'echo "Test successfully done"'
             }
         }
-
-        stage('deploy') { // Moved inside stages block
+        stage('deploy') {  // Corrected indentation and placement
             steps {
-            
                 sh 'echo "Deploy step placeholder"'
             }
         }
