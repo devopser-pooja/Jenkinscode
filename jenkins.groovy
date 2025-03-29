@@ -20,6 +20,12 @@ pipeline {
                 sh 'echo "Test successfully done"'
             }
         }
+        stage('quality-gate') {
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
+        
         stage('deploy') {  // Corrected indentation and placement
             steps {
                 sh 'echo "Deploy step placeholder"'
