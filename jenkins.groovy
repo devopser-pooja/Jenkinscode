@@ -30,6 +30,7 @@ pipeline {
         
         stage('deploy') {  // Corrected indentation and placement
             steps {
+                deploy adapters: [tomcat9(credentialsId: 'tomcat-cred', path: '', url: 'http://172.31.39.182:8080')], contextPath: '/', war: '**/*.war'
                 sh 'echo "Deploy step placeholder"'
             }
         }
