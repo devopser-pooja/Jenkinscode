@@ -20,9 +20,10 @@ pipeline {
             steps {
                 withSonarQubeEnv(installationName:'sonar', credentialsId: 'sonar-cred') {
                     sh '/opt/maven/bin/mvn sonar:sonar'
-                }
+                
                 sh 'echo "Test successful"'
             }
+        }
         }
 
         stage('Quality Gates') {
