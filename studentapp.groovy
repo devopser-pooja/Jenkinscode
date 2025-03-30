@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Git clone') {
             steps {
-                sh 'git clone https://github.com/Anilbamnote/student-ui-app.git'
+                sh 'git clone https://github.com/Pritam-Khergade/student-ui.git'
                 sh 'echo "Git repo cloned successfully"'
             }
         }
